@@ -12,15 +12,47 @@
 
 </head>
 <body>
-<header>
-    <h1>
-        Web Application Developer Requirements
-    </h1>
-</header>
-<div>
-    <h1>Input goes below.</h1>
+<div class="container ce">
+    <h1>Who are you?</h1>
+            <input class="input" type="text" placeholder="fill" name="name" id="name">
+            <button class="click" type="button" data-toggle="modal" data-target="#myModal" id="submit">Click</button>
+  <!-- modal -->
+            <div class="modal fade" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Modal</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <!-- modal is open body -->
+                        <div class="modal-body">
+                            <!-- data passed -->
+                            <h6 id="modal_body"></h6>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" id="close">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 </div>
-
+<script>
+    let input = document.querySelector(".input");
+    let button = document.querySelector(".click");
+    button.disabled = true;
+    input.addEventListener("change", stateHandle);
+    
+    function stateHandle() {
+        if(document.querySelector(".input").value === "") {
+            button.disabled = true;
+        } else {
+            button.disabled = false;
+        }
+    };
+        submit.addEventListener("click", () => {
+            var name = $("#name").val();
+            var str = "Hi " + " " + name + " ,how are you today?";
+            $("#modal_body").text(str);
+        });
+    </script>
 
 
 <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
